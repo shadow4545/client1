@@ -32,7 +32,7 @@ function EditSinhvien() {
     useEffect(() => {
         const fetchSinhVien = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/sinhvien/${id}`);
+                const response = await axios.get(`https://server-inyq.onrender.com/api/sinhvien/${id}`);
                 const sv = response.data;
                 
                 // Chuyển định dạng ngày tháng để input type="date" có thể hiển thị
@@ -43,7 +43,7 @@ function EditSinhvien() {
                 
                 // Hiển thị ảnh cũ (nếu có)
                 if (sv.avatar) {
-                    setAvatarPreview(`http://localhost:5000/${sv.avatar.replace(/\\/g, '/')}`);
+                    setAvatarPreview(`https://server-inyq.onrender.com/${sv.avatar.replace(/\\/g, '/')}`);
                 }
                 setLoading(false);
             } catch (error) {
@@ -106,7 +106,7 @@ function EditSinhvien() {
 
         try {
             // Gửi yêu cầu PUT lên server
-            await axios.put(`http://localhost:5000/api/sinhvien/${id}`, dataToSubmit, {
+            await axios.put(`https://server-inyq.onrender.com/api/sinhvien/${id}`, dataToSubmit, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
