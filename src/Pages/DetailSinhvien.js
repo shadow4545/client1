@@ -11,7 +11,7 @@ function DetailSinhvien() {
   useEffect(() => {
     const fetchSinhvien = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/sinhvien/${id}`);
+        const res = await axios.get(`https://server-inyq.onrender.com/api/sinhvien/${id}`);
         setSv(res.data);
       } catch (error) {
         console.error('Lỗi khi lấy dữ liệu sinh viên:', error);
@@ -48,7 +48,7 @@ function DetailSinhvien() {
         <div style={styles.card}>
           <div style={styles.avatarContainer}>
             <img
-              src={sv.avatar ? `http://localhost:5000/${sv.avatar.replace(/\\/g, '/')}` : 'https://via.placeholder.com/150'}
+              src={sv.avatar ? `https://server-inyq.onrender.com/${sv.avatar.replace(/\\/g, '/')}` : 'https://via.placeholder.com/150'}
               alt="avatar"
               style={styles.avatar}
             />
