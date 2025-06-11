@@ -20,89 +20,103 @@ function Index() {
         setError('Sai tài khoản hoặc mật khẩu');
       }
       setLoading(false);
-    }, 500);
+    }, 800);
   };
 
   return (
     <div style={{
       display: 'flex',
-      height: '100vh',
       justifyContent: 'center',
       alignItems: 'center',
-      background: 'linear-gradient(to right, #6a11cb, #2575fc)'
+      height: '100vh',
+      background: 'linear-gradient(135deg, #667eea, #764ba2)',
+      fontFamily: 'Arial, sans-serif',
     }}>
       <div style={{
-        background: '#fff',
-        padding: '2rem',
-        borderRadius: '1rem',
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)',
+        backgroundColor: '#ffffff',
+        padding: '3rem 2rem 2rem',
+        borderRadius: '1.5rem',
+        boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
         width: '100%',
         maxWidth: '400px',
-        position: 'relative'
+        textAlign: 'center',
+        position: 'relative',
+        transition: 'transform 0.3s ease',
+        animation: 'fadeIn 0.8s ease-out'
       }}>
         <img
           src="https://dut.udn.vn/Files/admin/images/Tin_tuc/Khac/2020/LogoDUT/image002.jpg"
           alt="Logo DUT"
           style={{
-            position: 'absolute',
-            top: '0px',
-            left: '0px',
             width: '80px',
             height: '80px',
-            borderRadius: '12px',
-            backgroundColor: '#fff',
             objectFit: 'cover',
-            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)'
+            borderRadius: '0.75rem',
+            marginBottom: '1rem',
+            boxShadow: '0 2px 10px rgba(0, 0, 0, 0.15)'
           }}
         />
-        <h2 style={{ textAlign: 'center', marginBottom: '1.5rem', color: '#333' }}>Đăng nhập</h2>
+        <h2 style={{ marginBottom: '0.4rem', color: '#333', fontWeight: 'bold' }}>Login to SVLaoDB</h2>
+        <p style={{ marginBottom: '1.5rem', color: '#777' }}>@ make and develope by Mr Vanh</p>
         <form onSubmit={handleLogin}>
           <input
             type="text"
-            placeholder="Tên đăng nhập"
+            placeholder="User"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
             style={{
-              display: 'block',
+              width: '93%',
+              padding: '0.8rem',
               marginBottom: '1rem',
-              padding: '0.75rem',
-              width: '94%',
               borderRadius: '0.5rem',
               border: '1px solid #ccc',
-              fontSize: '1rem'
+              fontSize: '1rem',
+              transition: 'all 0.3s',
+              outline: 'none'
             }}
+            onFocus={(e) => e.target.style.borderColor = '#764ba2'}
+            onBlur={(e) => e.target.style.borderColor = '#ccc'}
           />
           <input
             type="password"
-            placeholder="Mật khẩu"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
             style={{
-              display: 'block',
+              width: '93%',
+              padding: '0.8rem',
               marginBottom: '1rem',
-              padding: '0.75rem',
-              width: '94%',
               borderRadius: '0.5rem',
               border: '1px solid #ccc',
-              fontSize: '1rem'
+              fontSize: '1rem',
+              transition: 'all 0.3s',
+              outline: 'none'
             }}
+            onFocus={(e) => e.target.style.borderColor = '#764ba2'}
+            onBlur={(e) => e.target.style.borderColor = '#ccc'}
           />
-          {error && <div style={{ color: 'red', marginBottom: '1rem' }}>{error}</div>}
+          {error && (
+            <div style={{ color: 'red', marginBottom: '1rem' }}>{error}</div>
+          )}
           <button
             type="submit"
             disabled={loading}
             style={{
-              padding: '0.75rem',
               width: '100%',
+              padding: '0.75rem',
               borderRadius: '0.5rem',
               border: 'none',
-              backgroundColor: '#2575fc',
+              backgroundColor: '#764ba2',
               color: 'white',
               fontSize: '1rem',
-              cursor: 'pointer'
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              transition: 'background-color 0.3s'
             }}
+            onMouseOver={(e) => e.target.style.backgroundColor = '#5a3e85'}
+            onMouseOut={(e) => e.target.style.backgroundColor = '#764ba2'}
           >
             {loading ? 'Đang đăng nhập...' : 'Đăng nhập'}
           </button>
