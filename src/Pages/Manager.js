@@ -2,15 +2,19 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+
+
+
 function Manager() {
   const [sinhviens, setSinhviens] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
 
+
   useEffect(() => {
     const fetchSinhviens = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/sinhvien');
+        const response = await axios.get('https://server-inyq.onrender.com/api/sinhvien');
         setSinhviens(response.data);
       } catch (error) {
         console.error('Lỗi khi lấy danh sách sinh viên:', error);
@@ -25,7 +29,7 @@ function Manager() {
   const handleDelete = async (id) => {
     if (window.confirm('Bạn có chắc chắn muốn xóa sinh viên này không?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/sinhvien/${id}`);
+        await axios.delete(`https://server-inyq.onrender.com/api/sinhvien/${id}`);
         setSinhviens(sinhviens.filter(sv => sv._id !== id));
         alert('Đã xóa thành công!');
       } catch (error) {
@@ -81,7 +85,7 @@ function Manager() {
                 {sv.avatar ? (
                 <Link to={`/detail/${sv._id}`}>
                 <img
-                src={`http://localhost:5000/${sv.avatar.replace(/\\/g, '/')}`}
+                src={`https://server-inyq.onrender.com/${sv.avatar.replace(/\\/g, '/')}`}
                 alt={sv.name}
                 style={styles.avatar}
                 />
